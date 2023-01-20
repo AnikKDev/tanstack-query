@@ -36,6 +36,7 @@ function App() {
       <h1>React query</h1>
       <button onClick={() => navigate("/postlist1")}>posts list 1</button>
       <button onClick={() => navigate("/postlist2")}>posts list 2</button>
+      <button onClick={() => navigate(`/firstpost`)}>First post</button>
       <Outlet />
     </div>
   );

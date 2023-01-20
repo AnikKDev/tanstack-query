@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PostsList1 from "./PostsList1";
 import PostList2 from "./assets/PostList2";
+import Post from "./Post";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/postlist1", element: <PostsList1 /> },
       { path: "/postlist2", element: <PostList2 /> },
+      { path: "/firstpost", element: <Post /> },
     ],
   },
 ]);

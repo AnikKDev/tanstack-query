@@ -9,6 +9,7 @@ const PostList2 = () => {
     queryKey: ["posts"],
     // second property will be the exact function that will fetch the data
     queryFn: getPosts,
+    // staleTime: 2000,
   });
   // setting up loading
   if (postsQuery.isLoading) return <h1>Loading...</h1>;
