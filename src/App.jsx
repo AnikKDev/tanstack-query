@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Outlet, useNavigate } from "react-router-dom";
 
 // dummy data
 const POSTS = [
@@ -6,19 +7,14 @@ const POSTS = [
   { id: 2, name: "Partho" },
 ];
 function App() {
-  // we can do two things with react query.
+  const navigate = useNavigate();
+  /* // we can do two things with react query.
   // ? 1. query --> getting the data from somewhere
   // ? 2. mutation --> posting the data to somewhere
   // to update the data instantly
   const queryClient = useQueryClient();
   console.log(POSTS);
-  // querying data
-  const postsQuery = useQuery({
-    // inside the object first one will be a unique identifier
-    queryKey: ["posts"],
-    // second property will be the exact function that will fetch the data
-    queryFn: () => wait(1000).then(() => [...POSTS]),
-  });
+
 
   // mutation (adding data)
   const newPostMutation = useMutation({
@@ -33,32 +29,16 @@ function App() {
     onSuccess: () => {
       queryClient.invalidateQueries("posts");
     },
-  });
-  // setting up loading
-  if (postsQuery.isLoading) return <h1>Loading...</h1>;
-  if (postsQuery.isError) return <pre>{JSON.stringify(postsQuery.error)}</pre>;
+  }); */
 
   return (
     <div>
       <h1>React query</h1>
-      {postsQuery.data.map((post) => (
-        <div key={post.id}>{post.name}</div>
-      ))}
-
-      {/* to add something we have to call mutate function inside newPostMutation function and pass the parameter there (promised one) */}
-      <button
-        disabled={newPostMutation.isLoading}
-        onClick={() => newPostMutation.mutate("Antu")}
-      >
-        Add new
-      </button>
+      <button onClick={() => navigate("/postlist1")}>posts list 1</button>
+      <button onClick={() => navigate("/postlist2")}>posts list 2</button>
+      <Outlet />
     </div>
   );
 }
-
-// wait function
-const wait = (duration) => {
-  return new Promise((resolve) => setTimeout(resolve, duration));
-};
 
 export default App;
